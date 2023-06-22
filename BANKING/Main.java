@@ -83,19 +83,21 @@ public class Main {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new BorderLayout(0, 0));
 		frame.getContentPane().add(container);
-		container.setLayout(cl);
+		container.setLayout(cl);//sets the layout of "container" as CardLayout
+		//"container" panel is now a parent component where we store all of the child panel
+//MAIN PANEL-------------------------------------------------------------------
 		
-//MAIN PANEL-------------------------------------------------------------------		
+		
 		JPanel mainPanel = new JPanel();
 		mainPanel.setBackground(UIManager.getColor("Button.darkShadow"));
-		container.add(mainPanel, "0");
+		container.add(mainPanel, "0");// container.add( component to add, component tag);
 		GridBagLayout gbl_mainPanel = new GridBagLayout();
-		mainPanel.setLayout(gbl_mainPanel);
+		mainPanel.setLayout(gbl_mainPanel);//sets "mainPanel" as a grid bag layout
 		
 		JButton regButton = new JButton("Register");
 		regButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				cl.show(container, "2");
+				cl.show(container, "2");// cl.show( parent component, child tag component)
 			}
 		});
 
@@ -113,10 +115,10 @@ public class Main {
 		
 		
 		GridBagConstraints gbc_logInButton = new GridBagConstraints();
-		gbc_logInButton.fill = GridBagConstraints.HORIZONTAL;
+		gbc_logInButton.fill = GridBagConstraints.HORIZONTAL;//fills the entire cell
 		gbc_logInButton.insets = new Insets(0, 0, 5, 0);
-		gbc_logInButton.gridx = 0;
-		gbc_logInButton.gridy = 2;
+		gbc_logInButton.gridx = 0;//row
+		gbc_logInButton.gridy = 2;//coloumn
 		mainPanel.add(logInButton, gbc_logInButton);
 
 		Label menuLabel = new Label("Welcome");
@@ -180,7 +182,9 @@ public class Main {
 		JButton btnNewButton = new JButton("Log out");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(0 ==JOptionPane.showConfirmDialog(null, "Are you sure?", "Logging out", JOptionPane.YES_NO_OPTION)) {
+				//this button when pressed pops up a prompt dialouge
+				// yes = 0, no = 1
+				if(0 ==JOptionPane.showConfirmDialog(null, "Are you sure?", "Logging out", JOptionPane.YES_NO_OPTION)) { 
 					
 					cl.show(container, "0");
 				}
